@@ -1,0 +1,21 @@
+package com.hivison.study.java.spring;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.FileSystemXmlApplicationContext;
+
+public class IOCApp1 {
+
+    public static void main(String[] args) {
+        //Create the application context (container)
+        ApplicationContext applicationContext = new FileSystemXmlApplicationContext("beans.xml");
+
+        //Create the bean
+        Organization organization = (Organization) applicationContext.getBean("myorganization");
+
+        //Invoke the company slogan via the bean
+        organization.corporateSlogan();
+
+        //Close the application context (container)
+        ((FileSystemXmlApplicationContext) applicationContext).close();
+    }
+}
